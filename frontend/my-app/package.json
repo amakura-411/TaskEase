@@ -8,7 +8,8 @@
     "serve": "sirv build --cors --single",
     "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider preact watch",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",

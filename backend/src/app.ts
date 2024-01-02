@@ -8,10 +8,9 @@ const app: Application = express()
 const port: number = 3000
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello nodemon!')
+  res.send('Hello nodemon!')
 })
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+  console.log(`listening on port ${port}`)
 })
-
