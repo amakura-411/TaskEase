@@ -6,6 +6,7 @@ WORKDIR /app/backend
 
 # パッケージファイルをコピーして依存関係をインストール
 COPY package.json package-lock.json /app/backend/
+COPY nodemon.json package-lock.json /app/backend/
 
 # 依存関係のインストール
 RUN npm install
@@ -20,4 +21,4 @@ RUN npm run build
 EXPOSE 3000
 
 # アプリケーションを起動
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]

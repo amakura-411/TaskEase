@@ -2,10 +2,14 @@ version: '3'
 services:
   backend:
     build: ./backend
+    volumes:
+      - ./backend:/app/backend
     ports:
       - '3000:3000'
     depends_on:
       - database
+    environment:
+      - NODE_ENV=development
     tty: true 
   frontend:
     build: ./frontend
