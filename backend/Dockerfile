@@ -21,4 +21,6 @@ RUN npm run build
 EXPOSE 3000
 
 # アプリケーションを起動
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "test"]
+
