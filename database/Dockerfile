@@ -1,5 +1,5 @@
 # べースイメージの指定
-FROM mongo:latest
+FROM mongo:7.0.3
 # ポートのエクスポート
 EXPOSE 27017
 # 起動時に実行するスクリプトを追加
