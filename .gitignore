@@ -1,0 +1,5 @@
+# ビルドされたファイル
+backend/js/
+
+# 依存関係のインストールされたパッケージ
+/backend/node_modules/
