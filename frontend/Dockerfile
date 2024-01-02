@@ -1,12 +1,20 @@
-# ベースイメージの指定
-FROM nginx:latest
+# ベースイメージの選択
+FROM node:latest
+
 # 作業ディレクトリの指定
 WORKDIR /
-# ビルド済みのアプリケーションをコピー
-COPY index.html /usr/share/nginx/html
-COPY style /usr/share/nginx/html/style
-COPY script /usr/share/nginx/html/script
-# 使用するポートのエクスポート
-EXPOSE 80
+
+# ローカルのPreactアプリをコンテナにコピー
+COPY ./my-app /app/frontend
+
+# my-appディレクトリに移動
+WORKDIR /app/frontend/my-app
+
+# パッケージのインストール
+RUN npm install
+
+# ポートのエクスポート
+EXPOSE 8080
+
 # アプリケーションを起動
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "dev"]

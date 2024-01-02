@@ -13,8 +13,10 @@ services:
     tty: true 
   frontend:
     build: ./frontend
+    volumes:
+      - ./frontend:/app/frontend
     ports:
-      - '80:80'
+      - '8080:8080'
     depends_on:
       - backend
     tty: true
