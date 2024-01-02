@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "commonjs",
+        "strict": true,
+        "outDir": "./js" // TypeScriptから生成されるJavaScriptファイルの出力先ディレクトリ
+    },
+    "include": [
+        "./src/**/*.ts" // TypeScriptファイルのあるディレクトリを指定
+    ],
+    "exclude": [
+        "node_modules" // コンパイルから除外するディレクトリ
+    ]
+}
