@@ -1,5 +1,17 @@
 version: '3'
 services:
+  database:
+    image: mongo
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: username
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: mydatabase
+      TZ: Asia/Tokyo
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    restart: always
   backend:
     build: ./backend
     volumes:
@@ -20,17 +32,5 @@ services:
     depends_on:
       - backend
     tty: true
-  database:
-    image: mongo
-    build: ./database
-    ports:
-      - '27017:27017'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: username
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: mydatabase
-    volumes:
-      - ./database/data:/data/db
-    restart: always
 
 
