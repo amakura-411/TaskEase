@@ -2,8 +2,8 @@ import { MongoClient, ServerApiVersion } from 'mongodb'
 
 //プレースホルダーをアトラスの接続文字列に置き換える。
 const uri = 'mongodb://database:27017'
-//MongoClient に MongoClientOptions オブジェクトを指定して、 安定版 API のバージョンを設定します。
 
+//MongoClient に MongoClientOptions オブジェクトを指定して、 安定版 API のバージョンを設定します。
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -12,7 +12,7 @@ const client = new MongoClient(uri, {
     }
 })
 
-async function dbOpen() {
+async function DatabaseOpen() {
     try {
         // Connect the client to the server (optional starting in v4.7)
         await client.connect()
@@ -28,4 +28,4 @@ async function dbOpen() {
     }
 }
 
-export default dbOpen
+export default DatabaseOpen;
