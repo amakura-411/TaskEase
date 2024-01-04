@@ -7,15 +7,7 @@ const uri = 'mongodb://myuser:userpassword@database:27017/mydatabase';
 export async function connectDatabase() {
     try {
         await mongoose.connect(uri);
-        // コレクション一覧を表示
-        const collections = await mongoose.connection.db.collections();
-        console.log('Collections:', collections.map((collection) => collection.collectionName));
-        // usersの全てを表示
-        // tasksにアクセスできるか確認  
-        const ok = await mongoose.connection.db.collection('tasks');
-        console.log('ok:', ok);
-        const tasks = await mongoose.connection.db.collection('tasks').find({}).toArray();
-        console.log('Tasks:', tasks);
+        // console.log('Tasks:', tasks);
         console.log('MongoDB connected!');
     } catch (error) {
         console.error('MongoDB connection error:', error);
