@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import  { connectDatabase, closeDatabase }   from '../frameworks/db/connect'
+import { connectDatabase, closeDatabase } from '../frameworks/db/connect'
 
 jest.mock('../frameworks/db/connect') // connectファイルをモック化
 
