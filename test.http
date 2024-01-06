@@ -1,0 +1,26 @@
+
+DELETE  http://localhost:3000/task/remove/65980bceab6e6943aa6975cf HTTP/1.1
+
+###
+
+GET     http://localhost:3000/task HTTP/1.1
+
+###
+
+POST   http://localhost:3000/task/add HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Task 1",
+    "description": "Description 1",
+    "deadline": "2019-01-01T00:00:00.000Z"
+}
+
+###
+PUT  http://localhost:3000/task/update/65980d4cb7f76be6ec120ecd HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Task 1",
+    "description": ""
+}

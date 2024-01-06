@@ -1,31 +1,25 @@
-import { MongoClient, ServerApiVersion } from 'mongodb'
+import mongoose from 'mongoose'
 
-//プレースホルダーをアトラスの接続文字列に置き換える。
-const uri = 'mongodb://database:27017'
+// const uri = 'mongodb://database:27017';
+const uri = 'mongodb://myuser:userpassword@database:27017/mydatabase'
 
-//MongoClient に MongoClientOptions オブジェクトを指定して、 安定版 API のバージョンを設定します。
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true
-    }
-})
-
-async function DatabaseOpen() {
+// データベース接続を行う関数
+export async function connectDatabase() {
     try {
-        // Connect the client to the server (optional starting in v4.7)
-        await client.connect()
-
-        // 成功した接続を確認するためにpingを送信する。
-        await client.db('admin').command({ ping: 1 })
-        console.log(
-            'Pinged your deployment. You successfully connected to MongoDB!'
-        )
-    } finally {
-        // 終了/エラー時にクライアントが終了するようにする。
-        await client.close()
+        await mongoose.connect(uri)
+        // console.log('Tasks:', tasks);
+        console.log('MongoDB connected!')
+    } catch (error) {
+        console.error('MongoDB connection error:', error)
     }
 }
 
-export default DatabaseOpen;
+// データベース接続を閉じる関数
+export async function closeDatabase() {
+    try {
+        await mongoose.disconnect()
+        console.log('MongoDB connection closed.')
+    } catch (error) {
+        console.error('Failed to close MongoDB connection:', error)
+    }
+}

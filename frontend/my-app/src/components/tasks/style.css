@@ -1,0 +1,32 @@
+.nodate {
+    color: #fff;
+}
+
+/* cards */
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    width: 80rem;
+    margin: 2rem auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: black;
+}
+.complete {
+    background: #d4edda;
+    color: #155724;
+}
+
+.incomplete {
+    background: #f8d7da;
+    color: #721c24;
+}

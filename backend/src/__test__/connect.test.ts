@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import  DatabaseOpen  from '../frameworks/db/connect'
+import { connectDatabase, closeDatabase } from '../frameworks/db/connect'
 
 jest.mock('../frameworks/db/connect') // connectファイルをモック化
 
@@ -10,7 +10,7 @@ jest.mock('../frameworks/db/connect') // connectファイルをモック化
 describe('Database connection test', () => {
     it('should connect to the database', async () => {
         // dbOpen関数をスパイして、呼び出しを確認
-        const mockDbOpen = DatabaseOpen as jest.Mock
+        const mockDbOpen = connectDatabase as jest.Mock
         await mockDbOpen()
 
         // 以下にデータベースへの接続をテストするコードを記述
