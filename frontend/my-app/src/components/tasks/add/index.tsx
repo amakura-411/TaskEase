@@ -13,11 +13,12 @@ const AddTask = () => {
     const [value, setValue] = useState({
         title: '',
         description: '',
-        deadline: new Date()
+        deadline: null
     })
 
     const postTask = async (data: postData) => {
         try {
+            console.log(JSON.stringify(data))
             const res = await fetch('http://localhost:3000/task/add', {
                 method: 'POST',
                 headers: {
@@ -26,12 +27,14 @@ const AddTask = () => {
                 body: JSON.stringify(data)
             }).then((res) => res.json())
             console.log(res)
-            confirm('追加しました')
+            alert('追加に成功しました')
             setShowModak(false)
+            // リロードする
+            // location.reload()
             return res
         } catch (e) {
             console.log(e)
-            confirm('追加できませんでした' + e)
+            alert('追加に失敗しました')
         }
     }
 
@@ -42,11 +45,29 @@ const AddTask = () => {
         const postdata: postData = {
             title: value.title,
             description: value.description,
-            deadline: value.deadline
+            deadline: value.deadline 
         }
-        // もし、１つでも殻がある場合、アラートを出す
-        if (!postdata.title || !postdata.description || !postdata.deadline) {
+        // もし、titleかdeadlineが空の場合、アラートを出す
+        if (!postdata.title || !postdata.deadline) {
             alert('入力してください')
+            return
+        }
+
+        // deadlineを日本時間にする
+        const deadline = new Date(postdata.deadline)
+        deadline.setHours(deadline.getHours() + 9)
+        postdata.deadline = deadline
+
+        // もし、deadlineが昨日以前の過去の日付の場合、アラートを出す
+        const now = new Date()
+        const yesterday = new Date(now.setDate(now.getDate()))
+        // 秒数を0にする
+        yesterday.setSeconds(0)
+        yesterday.setMinutes(0)
+        yesterday.setHours(0)
+        console.log(yesterday)
+        if (new Date(postdata.deadline) < yesterday) {
+            alert('締切日は今日以降にしてください')
             return
         }
         console.log(postdata)
@@ -103,6 +124,7 @@ const AddTask = () => {
                                         type="date"
                                         name="deadline"
                                         id="deadline"
+                                        onInput={onInput}
                                     ></input>
                                     <input type="submit" value="Add Task" />
                                 </form>
