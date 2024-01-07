@@ -18,9 +18,6 @@ backend/
     nodemon.json
     package.json
     src/
-        __test__/
-            addController.test.ts
-            ...
         app.ts
         controllers/
         frameworks/
