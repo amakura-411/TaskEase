@@ -1,43 +1,73 @@
 # TaskEase プロジェクト
 ## 概要
-TaskEaseはToDoリストアプリケーションです。
+TaskEaseはシンプルなToDoリストアプリケーションです。
 
-バックエンドにはExpress.js、フロントエンドにはPreact（TypeScript）を使用しています。
-
-バックエンドではAPIを作成し、フロントエンドではタスクの管理を行います。
-
-また、MongoDBをデータベースとして使用しています。
+Javascriptおよび、TypeScriptの学習のために作成しました。
 
 ## ディレクトリ構成
 
 ``` bash
 TaskEase/
-|-- backend/
-|   |-- js/
-|   |-- node_modules/
-|   |-- src/
-|   |-- nodemon.json
-|   |-- package-lock.json
-|   |-- package.json
-|   |-- Dockerfile
-|-- frontend/
-|   |-- Dockerfile
-|   |-- my-app/
-|       |-- node_modules/
-|       |-- src/
-|       |-- test/
-|       |-- package-lock.json
-|       |-- package.json
-|       |-- tsconfig.json
-|-- database/
-|   |-- Dockerfile
-|   |-- init-mongo.js
+.gitignore
+.prettierrc
+babel.config.js
+backend/
+    .eslintrc
+    Dockerfile
+    js/
+    nodemon.json
+    package.json
+    src/
+        __test__/
+            addController.test.ts
+            ...
+        app.ts
+        controllers/
+        frameworks/
+            db/
+                connect.ts
+        hello.ts
+        models/
+    tsconfig.json
+database/
+    data/
+    init.js
+docker-compose.yml
+docker-entrypoint-initdb.d/
+    0-init-mongo.sh
+    1-init-mongo.sh
+    tests.json
+frontend/
+    Dockerfile
+    my-app/
+        .eslintrc
+        .gitignore
+        README.md
+        package.json
+        src/
+        tests/
+        tsconfig.json
+jest.config.js
+readme.md
+test.http
 
 ```
 
-## 各ディレクトリについて
-- backend: Express.jsを使用したバックエンドのディレクトリ。APIの作成やサーバー構築に関連するファイルが含まれます。
-- frontend: Preact（TypeScript）を使用したフロントエンドのディレクトリ。my-app内にフロントエンドのソースコードとテストが含まれています。
-- database: MongoDBデータベース関連のディレクトリ。init-mongo.jsが含まれ、データベースの初期化に関連するファイルが格納されています。
-  
-各ディレクトリ内には、それぞれのプロジェクトで必要なファイルや設定が含まれており、Dockerを使用してそれぞれのコンポーネントを構築するためのDockerfileが含まれています。
+## 技術スタック(chatGPTが文章を作成)
+### フロントエンド
+- フレームワーク: React (TypeScript)
+- frontend/my-app/ディレクトリにフロントエンドのコードが配置されています。
+- Reactはユーザーインターフェースを構築するためのJavaScriptライブラリで、TypeScriptはJavaScriptの静的型チェックと最新のECMAScript機能を提供します。
+- コードフォーマッターとしてPrettierを使用しています。
+### バックエンド
+- 言語とフレームワーク: Node.js (TypeScript)
+- backend/ディレクトリにバックエンドのコードが存在します。
+- Node.jsはサーバーサイドのJavaScript環境で、TypeScriptもここで使用されています。
+### データベース
+- データベース: MongoDB
+- database/ディレクトリとdocker-compose.ymlファイルから推測すると、MongoDBが使用されています。
+- MongoDBはNoSQLデータベースで、JSON-likeドキュメントを使用します。
+### コンテナ化
+- コンテナ技術: Docker
+- Dockerfileとdocker-compose.ymlファイルが存在するため、Dockerが使用されていると推測されます。
+- Dockerはアプリケーションとその依存関係をコンテナという独立した環境にパッケージ化するためのツールです。
