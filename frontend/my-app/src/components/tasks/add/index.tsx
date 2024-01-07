@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import style from './style.css'
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 
 // // 送信データの型定義
 type postData = {
@@ -18,7 +18,6 @@ const AddTask = () => {
 
     const postTask = async (data: postData) => {
         try {
-            console.log(JSON.stringify(data))
             const res = await fetch('http://localhost:3000/task/add', {
                 method: 'POST',
                 headers: {
@@ -26,26 +25,24 @@ const AddTask = () => {
                 },
                 body: JSON.stringify(data)
             }).then((res) => res.json())
-            console.log(res)
             alert('追加に成功しました')
             setShowModak(false)
             // リロードする
-            // location.reload()
+            location.reload()
             return res
         } catch (e) {
-            console.log(e)
             alert('追加に失敗しました')
+            console.log(e)
         }
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(value)
         // valueとpostDataの型が違うので、型を合わせる
         const postdata: postData = {
             title: value.title,
             description: value.description,
-            deadline: value.deadline 
+            deadline: value.deadline
         }
         // もし、titleかdeadlineが空の場合、アラートを出す
         if (!postdata.title || !postdata.deadline) {
@@ -70,7 +67,6 @@ const AddTask = () => {
             alert('締切日は今日以降にしてください')
             return
         }
-        console.log(postdata)
         postTask(postdata)
     }
 
@@ -83,7 +79,6 @@ const AddTask = () => {
 
     const [showModak, setShowModak] = useState(false)
     const toggleModal = () => {
-        console.log('toggleModal:' + showModak)
         setShowModak(!showModak)
     }
 
@@ -121,7 +116,7 @@ const AddTask = () => {
                                     />
                                     <label htmlFor="deadline">DEADLINE</label>
                                     <input
-                                        type="date"
+                                        type="datetime-local"
                                         name="deadline"
                                         id="deadline"
                                         onInput={onInput}

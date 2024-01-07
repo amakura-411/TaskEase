@@ -1,6 +1,7 @@
 import { useParams } from 'next/navigation'
 import { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
+import style from './style.css'
 
 const getTask = async ({ id }) => {
     console.log(`http://localhost:3000/task/${id}`)
@@ -36,9 +37,9 @@ const TaskPage = (Props) => {
     }
 
     return (
-        <div>
+        <div className={style.content}>
             <h1>TaskPage</h1>
-            <div className="task">
+            <div className={style.task}>
                 <div className="task__title">Task title:{task.title}</div>
                 <div className="task__description">
                     Task description:{task.description}
@@ -60,6 +61,8 @@ const TaskPage = (Props) => {
                     Task deadline:{task.deadline}
                 </div>
             </div>
+            {/* ページリンク */}
+            <a href="/tasks">戻る</a>
         </div>
     )
 }

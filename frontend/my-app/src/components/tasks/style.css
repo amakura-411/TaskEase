@@ -7,7 +7,7 @@
 .cards {
     display: flex;
     flex-direction: column;
-    width: 80rem;
+    width: 80vw;
     margin: 2rem auto;
 }
 
@@ -21,6 +21,41 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     color: black;
 }
+.card:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: #f8d7da;
+}
+.card a {
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+.card button {
+    background-color: #673ab8;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    width: fit-content;
+}
+.card .cardTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.deleteButton {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    width: fit-content;
+}
+
 .complete {
     background: #d4edda;
     color: #155724;
